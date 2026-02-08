@@ -605,13 +605,13 @@ export default function Home() {
       </section>
 
         {/* Upcoming Events Section */}
-        <section className="py-10 sm:py-16 md:py-20 relative z-10 px-2 sm:px-4 lg:px-8 bg-gradient-to-b from-transparent via-emerald-950/5 to-transparent">
-            <div className="container mx-auto">
-          <div className="text-center mb-10 md:mb-12">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-emerald-400 via-green-500 to-emerald-600 bg-clip-text text-transparent drop-shadow-lg">
-              Upcoming Events
-            </h2>
-          </div>
+        <section className="py-10 sm:py-16 md:py-20 relative z-10 px-2 sm:px-4 lg:px-8">
+          <div className="container mx-auto">
+            <div className="text-center mb-10 md:mb-12">
+              <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 text-center text-gradient-green pb-2">
+                Upcoming Events
+              </h2>
+            </div>
 
           <div className="max-w-5xl mx-auto">
             {upcomingEvents.map((event, index) => (

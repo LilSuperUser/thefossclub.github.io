@@ -16,6 +16,7 @@ import Timeline from "@/components/timeline"
 import ScrollingTools from "@/components/scrolling-tools"
 import { useTheme } from "next-themes"
 import ScrollProgressIndicator from "@/components/scroll-progress-indicator"
+import UpcomingEventCard from "@/components/upcoming-event-card"
 
 export default function Home() {
   const heroRef = useRef<HTMLElement>(null)
@@ -604,6 +605,31 @@ export default function Home() {
               />
             ))}
           </div>
+
+        {/* Upcoming Events Section */}
+        <section className="py-10 sm:py-16 md:py-20 relative z-10 px-2 sm:px-4 lg:px-8 bg-gradient-to-b from-transparent via-emerald-950/5 to-transparent">
+            <div className="container mx-auto">
+          <div className="text-center mb-10 md:mb-12">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-emerald-400 via-green-500 to-emerald-600 bg-clip-text text-transparent drop-shadow-lg">
+              Upcoming Events
+            </h2>
+          </div>
+
+          <div className="max-w-5xl mx-auto">
+            {upcomingEvents.map((event, index) => (
+              <UpcomingEventCard
+                key={index}
+                title={event.title}
+                date={event.date}
+                description={event.description}
+                image={event.image}
+                link={event.link}
+                buttonText={event.buttonText}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
 
           {/*<motion.div
             className="mt-8 sm:mt-12 md:mt-16 p-4 sm:p-6 md:p-8 rounded-3xl border border-green-900/50 bg-gradient-to-r from-green-900/10 to-green-900/30 dark:from-green-900/30 dark:to-green-900/50 shadow-xl shadow-green-500/10"

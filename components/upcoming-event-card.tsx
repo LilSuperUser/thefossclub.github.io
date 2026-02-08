@@ -36,7 +36,7 @@ export default function UpcomingEventCard({
 
           {/* Upcoming Badge */}
           <div className="absolute top-4 left-4 sm:top-6 sm:left-6">
-            <span className="px-4 py-2 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-full text-sm font-bold shadow-lg animate-pulse">
+            <span className="px-4 py-2 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-full text-sm font-bold shadow-lg">
               UPCOMING EVENT
             </span>
           </div>

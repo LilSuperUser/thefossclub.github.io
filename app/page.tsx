@@ -197,6 +197,24 @@ export default function Home() {
     },
   ]
 
+    const upcomingEvents = [
+    {
+      title: "FOSS Hack 2026",
+      date: "March 1-31, 2026",
+      description: (
+      <>
+        Join us for an entire month of innovation, and open-source development in <strong> India's Biggest FOSS Hackathon</strong>.
+        <br/>
+        Build an amazing FOSS project or contribute to pre-existing ones, learn from mentors, and connect with the FOSS community!
+      </>
+    ),
+    image: "/fosshack2026-banner.png",
+      link: "/fosshack",
+      buttonText: "Register Now"
+    },
+  ]
+
+
   const Mentors = [
     { name: "Vaibhav Pratap Singh", role: "CEH", color: "bg-yellow-500", link: "https://v8v88v8v88.com" },
     { name: "Diti Vasisht", role: "AI/ML specialist", color: "bg-violet-500", link: "https://diti.is-a.dev" },
@@ -586,26 +604,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Events Section */}
-      <section ref={sectionRefs.events} id="events" className="py-10 sm:py-16 md:py-20 relative z-10 px-2 sm:px-4 lg:px-8">
-        <div className="container mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-extrabold mb-10 md:mb-12 text-center text-gradient-green">
-            Events
-          </h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
-            {events.map((event, index) => (
-              <EventCard
-                key={index}
-                title={event.title}
-                date={event.date}
-                description={event.description}
-                image={event.image}
-                index={index}
-              />
-            ))}
-          </div>
-
         {/* Upcoming Events Section */}
         <section className="py-10 sm:py-16 md:py-20 relative z-10 px-2 sm:px-4 lg:px-8 bg-gradient-to-b from-transparent via-emerald-950/5 to-transparent">
             <div className="container mx-auto">
@@ -630,6 +628,26 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Events Section */}
+      <section ref={sectionRefs.events} id="events" className="py-10 sm:py-16 md:py-20 relative z-10 px-2 sm:px-4 lg:px-8">
+        <div className="container mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-10 md:mb-12 text-center text-gradient-green">
+            Events Concluded
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+            {events.map((event, index) => (
+              <EventCard
+                key={index}
+                title={event.title}
+                date={event.date}
+                description={event.description}
+                image={event.image}
+                index={index}
+              />
+            ))}
+          </div>
 
           {/*<motion.div
             className="mt-8 sm:mt-12 md:mt-16 p-4 sm:p-6 md:p-8 rounded-3xl border border-green-900/50 bg-gradient-to-r from-green-900/10 to-green-900/30 dark:from-green-900/30 dark:to-green-900/50 shadow-xl shadow-green-500/10"

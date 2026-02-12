@@ -394,12 +394,43 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section id="venue">
-        <LocalhostSection />
+      <Section id="about">
+        <div className="max-w-6xl mx-auto relative z-10">
+          <AnimatedTitle>About FOSS Hack</AnimatedTitle>
+          <motion.div
+            className="prose prose-xl text-foreground/82"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.2,
+              duration: 1,
+              ease: [0.6, -0.05, 0.01, 0.99],
+            }}
+          >
+            <p className="text-3xl leading-relaxed">
+              <b>FOSS Hack 2026</b> is the sixth edition of FOSS Hack,
+              <b>a hybrid hackathon</b> to promote Free and Open Source Software
+              by bringing together students and professionals to build or extend
+              FOSS projects.
+            </p>
+            <p className="text-3xl leading-relaxed">
+              our mission is to foster open-source development and provide a
+              platform for creative minds to build solutions that benefit the
+              community.
+            </p>
+            <p className="text-4xl leading-relaxed">
+              <b>Prize Pool : ₹5,00,000</b>
+            </p>
+          </motion.div>
+        </div>
       </Section>
 
       <Section id="timeline">
         <Timeline />
+      </Section>
+
+      <Section id="venue">
+        <LocalhostSection />
       </Section>
 
       <Section id="rules">
@@ -674,9 +705,9 @@ export default function Home() {
               { name: "Aditya Mishra", title: "PR" },
               {
                 name: "Ishita Kaushik",
-                title: "Social Media / Photos / Videos Head",
+                title: "Social Media ",
               },
-              { name: "Adarsh", title: "Social Media & Shoot & Edit" },
+              { name: "Adarsh", title: "Social Media Organizer" },
               { name: "Satyam Raj", title: "Photography" },
               { name: "Anmol Upadhyay", title: "Videography" },
               {
@@ -730,33 +761,6 @@ export default function Home() {
                 </p>
               </motion.div>
             ))}
-          </motion.div>
-        </div>
-      </Section>
-      <Section id="about">
-        <div className="max-w-5xl mx-auto relative z-10">
-          <AnimatedTitle>About FOSS Hack</AnimatedTitle>
-          <motion.div
-            className="prose prose-xl text-foreground/60"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              delay: 0.2,
-              duration: 1,
-              ease: [0.6, -0.05, 0.01, 0.99],
-            }}
-          >
-            <p className="text-2xl leading-relaxed">
-              FOSS Hack 2026 is the sixth edition of FOSS Hack, a hybrid
-              hackathon to promote Free and Open Source Software by bringing
-              together students and professionals to build or extend FOSS
-              projects.
-            </p>
-            <p className="text-2xl leading-relaxed">
-              With a prize pool of ₹5,00,000, our mission is to foster
-              open-source development and provide a platform for creative minds
-              to build solutions that benefit the community.
-            </p>
           </motion.div>
         </div>
       </Section>

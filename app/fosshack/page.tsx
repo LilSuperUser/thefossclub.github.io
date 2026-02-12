@@ -395,10 +395,11 @@ export default function Home() {
       </Section>
 
       <Section id="about">
-        <div className="max-w-6xl mx-auto relative z-10">
+        <div className="max-w-5xl mx-auto relative z-10">
           <AnimatedTitle>About FOSS Hack</AnimatedTitle>
+
           <motion.div
-            className="prose prose-xl text-foreground/82"
+            className="prose prose-xl text-foreground/82 space-y-6"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -408,18 +409,18 @@ export default function Home() {
             }}
           >
             <p className="text-3xl leading-relaxed">
-              <b>FOSS Hack 2026</b> is the sixth edition of FOSS Hack,
-              <b>a hybrid hackathon</b> to promote Free and Open Source Software
-              by bringing together students and professionals to build or extend
-              FOSS projects.
+              FOSS Hack is <b>India's Biggest FOSS Hackathon</b>.
             </p>
+
+            <p className="text-2xl leading-relaxed">
+              <b>FOSS Hack 2026</b> is the sixth edition of FOSS Hack, planned
+              as a <b>month-long hybrid hackathon</b> dedicated to promoting
+              FOSS culture by bringing together students and working
+              professionals to build or extend pre-existing FOSS projects.
+            </p>
+
             <p className="text-3xl leading-relaxed">
-              our mission is to foster open-source development and provide a
-              platform for creative minds to build solutions that benefit the
-              community.
-            </p>
-            <p className="text-4xl leading-relaxed">
-              <b>Prize Pool : ₹5,00,000</b>
+              Prize Pool for the Hackathon is : <b>₹5,00,000</b>
             </p>
           </motion.div>
         </div>

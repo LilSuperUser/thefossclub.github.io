@@ -1,40 +1,51 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 
 const timeline = [
-  { title: "Registration Open" },
+  { title: "Registration Open", eventDate: "2026-02-01" },
+
   {
     title: "Registration Closing",
     date: "Online, 20th February",
     time: "11:59 PM",
+    eventDate: "2026-02-20T23:59:00",
   },
+
   {
     title: "Orientation",
     date: "Offline, 2nd March",
     time: "12:30 PM – 4:30 PM",
+    eventDate: "2026-03-02T12:30:00",
   },
+
   {
-    title: "Sessions",
+    title: "Session",
     date: "Online, Every Saturday",
-    time: "Mentor Sessions & Workshops",
-    highlight: true,
+    time: "Mentors Session & Workshop",
+    eventDate: "2026-07-03T00:00:00",
   },
+
   {
     title: "Final Hack Session",
     date: "Offline, 28th – 29th March",
-    time: "28th 9 AM – 29th 3 PM",
+    time: "28th 10 AM – 29th 3 PM",
+    eventDate: "2026-03-28T10:00:00",
   },
+
   {
     title: "Hackathon Concludes",
     date: "Online, 31st March",
     time: "11:59 PM",
+    eventDate: "2026-03-31T23:59:00",
   },
+
   {
     title: "Results",
     date: "Online, 4th May",
-    time: "~by FOSS United",
+    time: "by FOSS United",
+    eventDate: "2026-05-04",
   },
 ];
 
@@ -42,29 +53,42 @@ export default function Timeline() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const desktopLine = useAnimation();
   const mobileLine = useAnimation();
+  const lineContainerRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
 
     const start = () => {
+      const now = new Date().getTime();
+
+      const eventTimes = timeline.map((item) =>
+        new Date(item.eventDate!).getTime(),
+      );
+
+      const firstDate = eventTimes[0];
+      const lastDate = eventTimes[eventTimes.length - 1];
+
+      let progress = (now - firstDate) / (lastDate - firstDate);
+
+      if (progress < 0) progress = 0;
+      if (progress > 1) progress = 1;
+
       desktopLine.set({ scaleX: 0 });
-      mobileLine.set({ scaleY: 0 });
 
       desktopLine.start({
-        scaleX: 1,
-        transition: {
-          duration: 8,
-          ease: "linear",
-        },
+        scaleX: progress,
+        transition: { duration: 2, ease: "easeOut" },
       });
+      let current = null;
 
-      mobileLine.start({
-        scaleY: 1,
-        transition: {
-          duration: 8,
-          ease: "linear",
-        },
-      });
+      for (let i = 0; i < eventTimes.length; i++) {
+        if (now >= eventTimes[i]) {
+          current = i;
+        }
+      }
+
+      setActiveIndex(current);
     };
 
     const observer = new IntersectionObserver(
@@ -98,7 +122,7 @@ export default function Timeline() {
       </motion.h2>
 
       <div className="hidden md:block max-w-7xl mx-auto px-8">
-        <div className="relative">
+        <div ref={lineContainerRef} className="relative">
           {/* Line */}
           <div className="absolute left-8 right-8 top-1/2 h-px bg-white/10" />
           <motion.div
@@ -134,15 +158,27 @@ export default function Timeline() {
                           {item.date}
                         </p>
                       )}
-                      <p className="text-xl font-medium text-white">
+                      <p
+                        className={`text-xl font-medium mb-1 transition-all duration-500 ${
+                          index <= activeIndex! ? "text-white" : "text-white/40"
+                        }`}
+                      >
                         {item.title}
                       </p>
                     </motion.div>
                   )}
 
                   {/* Dot */}
-                  <div className="relative w-5 h-5 rounded-full bg-green-400 z-10">
-                    {item.highlight && (
+                  <div
+                    className={`timeline-dot relative w-5 h-5 rounded-full z-10 transition-all duration-500 ${
+                      index < activeIndex!
+                        ? "bg-green-400"
+                        : index === activeIndex
+                          ? "bg-green-400 scale-125 shadow-[0_0_20px_#4ade80]"
+                          : "bg-white/20"
+                    }`}
+                  >
+                    {index === activeIndex && (
                       <span className="absolute inset-0 rounded-full animate-pulse-ring" />
                     )}
                   </div>
@@ -155,7 +191,11 @@ export default function Timeline() {
                       viewport={{ once: true }}
                       transition={{ duration: 0.7, delay: index * 0.08 }}
                     >
-                      <p className="text-xl font-medium text-white mb-1">
+                      <p
+                        className={`text-xl font-medium mb-1 transition-all duration-500 ${
+                          index <= activeIndex! ? "text-white" : "text-white/40"
+                        }`}
+                      >
                         {item.title}
                       </p>
                       {item.date && (

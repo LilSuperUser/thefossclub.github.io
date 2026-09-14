@@ -163,7 +163,7 @@ export default function Home() {
       title: "Lumexis: Interactive session on Git & Open-Source Alternatives",
       date: "September 2, 2025",
       description:
-        "A hands-on session where you’ll install Linux, learn how it works, and understand why so many developers swear by it.",
+                  "We presented our vision, explored FOSS principles, and demonstrated open-source alternatives to proprietary software, ending with a live demo of basic Git workflows.",
       image: "/lumexis.webp?=300&width=400",
     },
     {
